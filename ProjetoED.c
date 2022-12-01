@@ -69,6 +69,9 @@ struct matriz
     int ncolunas;
 };
 typedef struct matriz Matriz;
+
+/*Matriz simples para cadastrar apenas os nomes dos mercados*/
+void CadastraMercado (char mercado, int lista); //protótipo da função CadastraMercado
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -78,6 +81,8 @@ int main(int argc, char const *argv[])
     int opcaosubmenu1; /* receber a opcao do usuario do submenu mercado*/
     int opcaosubmenu2; /* receber a opcao do usuario do submenu folheto*/
     int opcaosubmenu3; /* receber a opcao do usuario do submenu modificando folheto do submenu folheto*/
+    int lista;
+    char mercado;
 
     do
     {
@@ -107,6 +112,7 @@ int main(int argc, char const *argv[])
                 switch (opcaosubmenu1)
                 {
                 case 1:
+                    CadastraMercado(mercado, lista);
                     break;
                 case 2:
                     break;
@@ -191,4 +197,25 @@ int main(int argc, char const *argv[])
         }
     } while ((opcaoMenu != 0));
     return 0;
+}
+
+void CadastraMercado(char mercado, int lista){
+    char Mercado[3][5];
+    int i,j;
+
+    //percorrendo os valores da matriz e inserindo nomes de mercado
+    printf("Digite os nomes dos mercados separados por Enter\n");
+    for(i = 0; i<3; i++){
+        for(j=0; j<5; j++){
+          scanf("%c", &Mercado[i][j]);
+        }
+    }
+    
+    //printando nomes de mercado (teste)
+    // for(i = 0; i<3; i++){
+    //     for(j=0; j<5; j++){
+    //       printf("%c", Mercado[i][j]);
+    //     }
+    // }
+    
 }
