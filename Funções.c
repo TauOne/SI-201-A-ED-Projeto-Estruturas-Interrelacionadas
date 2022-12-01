@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-//------------------------------------------------------------------------------
+/*----------------------------------------------------------------------------*/
 #define tamanho 3  // tamanho maximo da FILA
 /* -----------------------------------------------------------------------------
 Estrutura FILA ESTATICA
@@ -34,8 +34,7 @@ Estrutura MATRIZ
         int ncolunas;
     };
     typedef struct matriz Matriz;
-//------------------------------------------------------------------------------
-
+/*=============================================================================*/
 int inicializa          (T_FILA *f);
 int verifica_vazio      (T_FILA f);
 int remover             (T_FILA *f);
@@ -59,100 +58,19 @@ int Listar_LS           (Tno_ls *CP_inicio);
 int Obter_pos_LS        (Tno_ls *CP_inicio, int dado, int *pos);
 int Obter_Tamanho_LS    (Tno_ls *CP_inicio, int *tam);
 int Inverte_LS          (Tno_ls **P_inicio);
-//------------------------------------------------------------------------------
-
+/*============================================================================*/
 int main(int argc, char const *argv[])
 {
-    char info[20];
-	int resp, pos;
-	int erro; /* valor de erro retornado pelas funcoes */
-    T_FILA s;
-	Tno_ls *ini; // a lista esta aqui
-    Tno_pilha *ini;
-	Tno_pilha *P1, *P2, *P3;
-
-	int q;  /* receber a opcao do usuario */
-	erro=Inicializar_LS (&ini);
-
-	do {
-	    system("cls");
-	    printf("Nome do trabalho");
-		printf("\n\nOpcoes: \n\n");
-		printf("1 -> Inserir novo folheto \n");
-		scanf("%d", &q);     /* Ler a opcao do usuario */
-		switch(q) {
-			case 1: printf("Nome do produto: ");
-                    scanf("%s",&info);
-                    erro=Inserir_inicio_LS (&ini, info);
-                    if (erro == 0) printf("Insercao realizada com sucesso\n");
-                    system("pause");
-					break;
-            case 10: printf("Dado para insercao na lista: ");
-                    scanf("%d",&info);
-                    printf("Posicao de insercao: ");
-                    scanf("%d",&pos);
-
-                    erro=Inserir_meio_LS (&ini, info, pos);
-
-                    if (erro == 0) printf("Insercao realizada com sucesso\n");
-                    system("pause");
-					break;
-			case 2: printf("Dado para insercao na lista: ");
-                    scanf("%d",&info);
-                    Inserir_fim_LS (&ini, info);
-			        break;
-            case 3: erro = Remover_inicio_LS (&ini);
-                    if (erro==1)
-                    {
-                        printf("\nLista vazia. Impossivel remover");
-                    }
-                    system("pause");
-                    break;
-			case 4: erro=Listar_LS (ini);
-                    if (erro==1)
-                    {
-                        printf("\nLista vazia. Impossivel listar");
-                    }
-                    system("pause");
-					break;
-			case 5: erro=Inicializar2_LS (&ini);
-                    printf("\nInicializacao realizada com sucesso !\n");
-                    printf("\nLISTA VAZIA !\n");
-                    system("pause");
-					break;
-			case 6: erro=Inverte_LS (&ini);
-                    if (erro == 1)
-                        printf("\nLista vazia. Inversao nao realizada !\n");
-                    else
-                        printf("\nInversao realizada !\n");
-                    system("pause");
-					break;
-			case 7: printf("Dado para pesquisa na lista: ");
-                    scanf("%d",&info);
-                    erro = Repete_Dado_LS (ini, info, &resp);
-                    if (erro!=0)
-                        printf("\nErro na opera��o");
-                    else
-                        printf("\nResposta (1:sim, 0:Nao) : %d \n",resp);
-                    system("pause");
-					break;
-			case 9: break;
-			default: printf("\n\n Opcao nao valida");
-		}
-		getchar();    /* Limpa o buffer de entrada */
-	} while ((q != 9) );
-
     return 0;
 }
-
-// ==================================================================
+// =============================================================================
 int inicializa (T_FILA *f)
 {
   (*f).inicio = -1;
   (*f).fim = -1;
   return 0;
 }
-// ==================================================================
+// -----------------------------------------------------------------------------
 int verifica_vazio(T_FILA f)
 {
     if(f.inicio==f.fim+1){
@@ -161,7 +79,7 @@ int verifica_vazio(T_FILA f)
         return -1;
     }
 }
-// ==================================================================
+// -----------------------------------------------------------------------------
 int remover(T_FILA *f)
 {
     int erro = verifica_vazio(*f);
@@ -173,7 +91,7 @@ int remover(T_FILA *f)
     else
        return 1; // impossivel remover. Underflow
 }
-// ==================================================================
+// -----------------------------------------------------------------------------
 int verifica_cheio(T_FILA f)
 {
     if (f.fim == tamanho-1 ){
@@ -182,7 +100,7 @@ int verifica_cheio(T_FILA f)
         return 2;  // fila n�o cheia
     }
 }
-// ==================================================================
+// -----------------------------------------------------------------------------
 int insere(T_FILA *f, int x)
 {
     int erro = verifica_cheio(*f);
@@ -197,7 +115,7 @@ int insere(T_FILA *f, int x)
     else
        return 1; // impossivel inser��o. overflow
 }
-// ==================================================================
+// -----------------------------------------------------------------------------
 int listar(T_FILA f)
 {  
     int i,erro;
@@ -211,8 +129,7 @@ int listar(T_FILA f)
     }
     else return 1;  // nao possivel listar pois a fila esta vazia
 }
-// ==================================================================
-// ========================
+// =============================================================================
 int Listar (Tno_pilha *P1)
 {
     printf ("Pilha: ");
@@ -224,8 +141,9 @@ int Listar (Tno_pilha *P1)
       printf (" \n ");
       system ("pause");
 }
-
-// ========================
+/* =============================================================================
+FUNÇÕES PILHAS
+==============================================================================*/
 int Juntar_pilhas (Tno_pilha **P1, Tno_pilha **P2, Tno_pilha **P3)
 {
     Tno_pilha *P_aux;  // pilha auxiliar
@@ -256,12 +174,12 @@ int Juntar_pilhas (Tno_pilha **P1, Tno_pilha **P2, Tno_pilha **P3)
     }
     return 0;
 }
+/* -------------------------------------------------------------------------*/
 int Inicializar_pilha (Tno_pilha **inicio)
 {
 	*inicio= NULL;
 	return 0; /* sem erro */
 } /* Fim da fun��o de INICIALIZAR */
-
 // =================================================
 int Inicializar2_pilha(Tno_pilha **inicio)
 {
@@ -279,9 +197,8 @@ int Inicializar2_pilha(Tno_pilha **inicio)
 	   return 1; // inicializa apagando tudo da pilha
 	}
 }
-
 /* -------------------------------------------------------------------------------------
-INSER��O
+INSERÇÃO
 ---------------------------------------------------------------------------------------*/
 int Inserir_topo (Tno_pilha **inicio, int info)
 {
@@ -302,8 +219,6 @@ int Inserir_topo (Tno_pilha **inicio, int info)
 	}
     return 0;
 }
-
-
 /* -------------------------------------------------------------------------
 REMOCAO
 -------------------------------------------------------------------------*/
@@ -341,6 +256,7 @@ int Verifica_vazio (Tno_pilha *inicio, int *resp)
        *resp = 1; // Pilha Vazia
     return 0;
 }
+/* -------------------------------------------------------------------------*/
 int Listar_LS (Tno_ls *inicio)
 {
 	int i;
@@ -371,7 +287,6 @@ int Inicializar_LS (Tno_ls **inicio)
 	return 0; /* sem erro */
 } /* Fim da fun��o de INICIALIZAR */
 /* ================================================= */
-
 int Inicializar2_LS(Tno_ls **inicio)
 {
     Tno_ls *percorre, *aux;
@@ -391,8 +306,6 @@ int Inicializar2_LS(Tno_ls **inicio)
 	   return 0;
 	}
 }
-
-
 /* ================================================= */
 int Obter_Tamanho_LS(Tno_ls *inicio, int *tam)
 {
@@ -412,9 +325,8 @@ int Obter_Tamanho_LS(Tno_ls *inicio, int *tam)
          *tam = 0;
     }
 }
-
 /* -------------------------------------------------------------------------------------
-INSER��O
+INSERÇÃO
 ---------------------------------------------------------------------------------------*/
 int Inserir_inicio_LS (Tno_ls **inicio, int info)
 {
@@ -435,7 +347,6 @@ int Inserir_inicio_LS (Tno_ls **inicio, int info)
 	}
     return 0;
 }
-
 /* ================================================= */
 int Inserir_meio_LS (Tno_ls **inicio, int info, int pos)
 {
@@ -479,7 +390,6 @@ int Inserir_meio_LS (Tno_ls **inicio, int info, int pos)
     }
     return 0;
 }
-
 /* ---------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------*/
 int Inserir_fim_LS (Tno_ls **inicio, int info)
@@ -505,7 +415,6 @@ int Inserir_fim_LS (Tno_ls **inicio, int info)
 	}
 	return 0;
 }
-
 /* ================================================= */
 int Obter_Pos_LS (Tno_ls *inicio, int valor, int *pos)
 {
@@ -521,7 +430,6 @@ int Obter_Pos_LS (Tno_ls *inicio, int valor, int *pos)
      *pos = 0;
   return 1;  /* dado nao encontrado */
 }
-
 /* -------------------------------------------------------------------------
 REMOCAO
 -------------------------------------------------------------------------*/
@@ -540,7 +448,6 @@ int Remover_inicio_LS (Tno_ls **inicio)
         return 0;
     }
 }
-
 /* -------------------------------------------------------------------------
 INVERTER LISTA
 -------------------------------------------------------------------------*/
@@ -578,6 +485,7 @@ int Inverte_LS (Tno_ls **inicio)
     return 0;
 
 }
+/* -------------------------------------------------------------------------*/
 int Repete_Dado_LS   (Tno_ls *inicio, int info, int *resp)
 {
     int cont=0;  /* contagem de repeticoes*/
@@ -597,8 +505,81 @@ int Repete_Dado_LS   (Tno_ls *inicio, int info, int *resp)
        *resp = 0;
 	return 0; /* sem erro */
 }
+/* -------------------------------------------------------------------------*/
+int Remover_fim_LS (Tno_ls **inicio)
+{
+    Tno_ls *aux, *percorre;
+    int tamanho=0;
+    if (*inicio == NULL)
+    {
+        printf("\nLISTA VAZIA ! \nRemocao Impossivel\n");
+        return 1;  /* lista vazia, impossivel remover ultimo */
+    }
+    else
+    {
+        Obter_Tamanho_LS(*inicio, &tamanho);
+        if (tamanho == 1)
+        {
+            Remover_inicio_LS(inicio);
+        }
+        else
+        {
+            percorre = *inicio;
+            while (percorre->prox != NULL)
+            {
+                aux = percorre;
+                percorre = percorre -> prox;
+            }
+            aux->prox = NULL;
+            free(percorre);
+            return 0;
+        }
+    }
+}
+/*=========================================================================*/
+int Remover_meio_LS (Tno_ls **inicio, int pos)
+{
+    int tam;
+    Tno_ls *aux, *percorre;
+
+    /* Tratamento de erros ======================================= */
+    if (pos<= 0)
+        return 1;  /*) posicao invalida para remocao */
+
+    Obter_Tamanho_LS(*inicio, &tam);
+    if (pos > tam)
+        return 2;   /* posicao invalida. Acima do tamanho da lista */
+    /* ================================================= */
+    /* procura pela posicao de remocao */
+    if (pos==1)
+    {
+        /* remocao no fim */
+        Remover_inicio_LS(inicio);
+    }
+    else
+    {
+        if (pos == tam)
+        {
+            Remover_fim_LS(inicio);
+        }
+        else
+        {
+            int pos_aux=1;
+            percorre = *inicio;
+            while (pos_aux!=pos) /* parar uma posicao antes */
+            {
+                aux = percorre;
+                percorre = percorre -> prox;
+                pos_aux++;
+            }
+            aux -> prox = percorre -> prox;
+            free(percorre);
+        }
+    }
+    return 0;
+}
 /* -------------------------------------------------------------------------
-Matriz
+MATRIZ
 -------------------------------------------------------------------------*/
 Matriz* inicializaMatriz(int nlinhas, int ncolunas){
     Matriz* mat = malloc(sizeof(Matriz)); //criar primeiro o elemento da estrutura
