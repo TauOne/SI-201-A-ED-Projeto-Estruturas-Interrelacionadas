@@ -89,7 +89,7 @@ int main(int argc, char const *argv[])
         printf("\nEscolha uma opcao do menu: \n\n");
         printf("1 - Gerenciar Mercado \n");
         printf("2 - Gerenciar Folhetos e Imprimir\n");
-        printf("3 - Sair \n\n");
+        printf("0 - Sair \n\n");
         scanf("%d", &opcaoMenu); /* Ler a opcao do usuario */
         switch (opcaoMenu)
         {
@@ -102,7 +102,7 @@ int main(int argc, char const *argv[])
                 printf("1 - Cadastrar Mercado \n");
                 printf("2 - Consultar Mercados Cadastrados \n");
                 printf("3 - Remover Mercado \n");
-                printf("4 - Voltar \n\n");
+                printf("0 - Voltar \n\n");
                 scanf("%d", &opcaosubmenu1);
                 switch (opcaosubmenu1)
                 {
@@ -112,13 +112,13 @@ int main(int argc, char const *argv[])
                     break;
                 case 3:
                     break;
-                case 4:
+                case 0:
                     break;
                 default:
                     printf("\nOpcao nao valida \n");
                     system("pause");
                 }
-            } while ((opcaosubmenu1 != 4));
+            } while ((opcaosubmenu1 != 0));
 
             break;
         case 2:
@@ -132,7 +132,7 @@ int main(int argc, char const *argv[])
                 printf("4 - Remover Folheto Especifico \n");
                 printf("5 - Remover Mercado com Todos os Folhetos existentes \n");
                 printf("6 - Imprimir folhetos \n");
-                printf("7 - Voltar \n\n");
+                printf("0 - Voltar \n\n");
                 scanf("%d", &opcaosubmenu2);
                 switch (opcaosubmenu2)
                 {
@@ -147,7 +147,7 @@ int main(int argc, char const *argv[])
                         printf("2 - Remover produto\n");
                         printf("3 - Atualizar produto \n");
                         printf("4 - Consultar todos produtos cadastrados \n");
-                        printf("5 - Voltar \n\n");
+                        printf("0 - Voltar \n\n");
                         scanf("%d", &opcaosubmenu3);
                         switch (opcaosubmenu3)
                         {
@@ -159,13 +159,13 @@ int main(int argc, char const *argv[])
                             break;
                         case 4:
                             break;
-                        case 5:
+                        case 0:
                             break;
                         default:
                             printf("\nOpcao nao valida \n");
                             system("pause");
                         }
-                    } while ((opcaosubmenu3 != 5));
+                    } while ((opcaosubmenu3 != 0));
                     break;
                 case 3:
                     break;
@@ -175,20 +175,20 @@ int main(int argc, char const *argv[])
                     break;
                 case 6:
                     break;
-                case 7:
+                case 0:
                 break;
                 default:
                     printf("\nOpcao nao valida \n");
                     system("pause");
                 }
-            } while ((opcaosubmenu2 != 7));
+            } while ((opcaosubmenu2 != 0));
             break;
-        case 3:
+        case 0:
             break;
         default:
             printf("\nOpcao nao valida \n");
             system("pause");
         }
-    } while ((opcaoMenu != 3));
+    } while ((opcaoMenu != 0));
     return 0;
 }
