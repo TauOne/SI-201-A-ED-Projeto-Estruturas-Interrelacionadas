@@ -1,0 +1,34 @@
+1 - Dados de Impressão
+	1 - Gerenciar Mercado 
+		1 - Cadastrar Mercado [3][5] (final) -> vai representa uma pilha de listas, porém começa como uma matriz
+		2 - Consultar
+		3 - Remover Mercado
+		
+	2 - Gerenciar folhetos
+		1 - Inserir produtos do folheto para um mercado existente (matriz) -> lista (dia da semana) -> coluna da matriz de mercados
+		2 - Modificar folheto existente de um determinado mercado (mercado, lista, produto)
+			1 - Inserir novo produto
+			2 - Remover produto
+			3 - Atualizar produto
+			4 - Consultar todos produtos cadastrados
+		3 - Consultar todos os folhetos de um mercado
+		4 - Remover folheto especifico (mercado, lista)
+		5 - Remover mercado com todos os folhetos existentes -> remover todos os folhetos
+	
+2 - Impressão
+	*Fila e pilha vai ser montada aqui
+	
+	Fila (mercados)-> cada linha da matriz
+		remover primeiro, adicionar no ultimo, listar todos elementos da fila
+		
+	Pilha da Fila -> cada coluna da linha
+		obter topo, remover topo, inserir topo
+		cada elemento da pilha é uma lista com produtos
+
+Estrutura Final => Filas de mercados para impressão[3]->Pilhas de folhetos da semana para impressão [3]-> listas de folhetos -> cada folheto vai possuir uma matriz de produtos->nomes dos produtos, preco, precopromocional
+
+
+
+
+
+
