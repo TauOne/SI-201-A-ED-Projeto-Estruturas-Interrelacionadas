@@ -72,6 +72,7 @@ typedef struct matriz Matriz;
 
 /*Matriz simples para cadastrar apenas os nomes dos mercados*/
 void CadastraMercado (char mercado, int lista); //protótipo da função CadastraMercado
+void ConsultaMercado (char mercado, int lista); //protótipo da função ConsultaMercado
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -115,6 +116,7 @@ int main(int argc, char const *argv[])
                     CadastraMercado(mercado, lista);
                     break;
                 case 2:
+                    ConsultaMercado (mercado, lista); 
                     break;
                 case 3:
                     break;
@@ -201,6 +203,7 @@ int main(int argc, char const *argv[])
 
 void CadastraMercado(char mercado, int lista){
     char Mercado[3][5];
+    char ArmazenaMercados [3][5];
     int i,j;
 
     //percorrendo os valores da matriz e inserindo nomes de mercado
@@ -208,14 +211,25 @@ void CadastraMercado(char mercado, int lista){
     for(i = 0; i<3; i++){
         for(j=0; j<5; j++){
           scanf("%c", &Mercado[i][j]);
+          ArmazenaMercados [i][j] = Mercado[i][j];
         }
     }
-    
-    //printando nomes de mercado (teste)
-    // for(i = 0; i<3; i++){
-    //     for(j=0; j<5; j++){
-    //       printf("%c", Mercado[i][j]);
-    //     }
-    // }
-    
+    return ArmazenaMercados[i][j];
 }
+
+void ConsultaMercado(char mercado, int lista){
+    CadastraMercado(mercado, lista);
+    char ArmazenaMercados [3][5];
+    int i,j;
+
+  printf("Lista de mercados: \n");
+    for(i = 0; i<3; i++){
+        for(j=0; j<5; j++){
+        printf("%c \n", ArmazenaMercados[i][j]);
+        }
+    }
+}
+
+
+
+
