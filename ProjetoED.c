@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <string.h>
 
+/*================================================
+    INTEGRANTES DO GRUPO
+    Gabriel Marino - 247455
+    Gabriela Vitorino - 184438
+    Matheus Roberto Mariano - 246029
+    Tauan Rodrigues Assunção de Jesus - 247599 
+=================================================*/
+
+
 //------------------------------------------------------------------------------
 #define tamanho 2 // tamanho maximo da FILA
 #define tamanho2 5 //tamanho colunas
