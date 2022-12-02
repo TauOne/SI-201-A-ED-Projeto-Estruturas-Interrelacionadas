@@ -50,15 +50,6 @@ typedef struct no_ls
 } Tno_ls;
 
 int Inicializar_LS(Tno_ls **P_inicio);
-int Inicializar2_LS(Tno_ls **P_inicio);
-int Inicializar3_LS(Tno_ls **P_inicio);
-int Inicializar4_LS(Tno_ls **P_inicio);
-int Inicializar5_LS(Tno_ls **P_inicio);
-int Inicializar6_LS(Tno_ls **P_inicio);
-int Inicializar7_LS(Tno_ls **P_inicio);
-int Inicializar8_LS(Tno_ls **P_inicio);
-int Inicializar9_LS(Tno_ls **P_inicio);
-int Inicializar10_LS(Tno_ls **P_inicio);
 int Inserir_inicio_LS(Tno_ls **P_inicio, int info);
 int Remover_inicio_LS (Tno_ls **inicio);
 int Remover_fim_LS (Tno_ls **inicio);
@@ -71,6 +62,7 @@ int Obter_pos_LS(Tno_ls *CP_inicio, int dado, int *pos);
 int Obter_Tamanho_LS(Tno_ls *CP_inicio, int *tam);
 int Inverte_LS(Tno_ls **P_inicio);
 int cadastrarNovoFolheto(Tno_ls *mtrFolhetos[tamanho][tamanho2], int lin, int col, Tno_ls *inicio);
+int removerLista(Tno_ls **inicio);
 
 /* -----------------------------------------------------------------------------
 Estrutura MATRIZ
@@ -304,8 +296,49 @@ int main(int argc, char const *argv[])
                     }
                     break;
                 case 4:
+                    do{
+                        printf("\nDigite de qual mercado voce deseja excluir o folheto (1 ou 2): ");
+                        scanf("%d", &indicemercado);
+                        if(indicemercado != 1 && indicemercado!=2){
+                            printf("\nOpcao nao valida \n");
+                            system("pause");
+                        }
+                    }while(indicemercado != 1 && indicemercado != 2);
+
+                    printf("\nDigite qual folheto do mercado %d voce ira remover (1 ao 5): ",indicemercado);
+                    scanf("%d", &col);
+                    erro = removerLista(&mtrFolhetos[indicemercado-1][col-1]);
+                    if(erro == 1){
+                        printf("\nFolheto removido com sucesso!\n");
+                        system("pause");
+                    }
                     break;
                 case 5:
+                    do{
+                        printf("\nDigite qual mercado voce deseja remover todos os folhetos (1 ou 2): ");
+                        scanf("%d", &indicemercado);
+                        if(indicemercado != 1 && indicemercado!=2){
+                            printf("\nOpcao nao valida \n");
+                            system("pause");
+                        }
+                    }while(indicemercado != 1 && indicemercado != 2);
+                    indicemercado--;
+                    int cont2;
+
+                    if(indicemercado == 0){
+                        for(cont2 = 0; cont2 < indicefolheto; cont2++){
+                            erro = removerLista(&mtrFolhetos[indicemercado][cont2]);
+                        }
+                        printf("\nTodos os folhetos do mercado 1 foram removidos!\n");
+                        system("pause");
+                    }
+                    else{
+                        for(cont2 = 0; cont2 < indicefolheto2; cont2++){
+                            erro = removerLista(&mtrFolhetos[indicemercado][cont2]);
+                        }
+                        printf("\nTodos os folhetos do mercado 2 foram removidos!\n");
+                        system("pause");
+                    }   
                     break;
                 case 6:
                     break;
@@ -334,6 +367,25 @@ int Inicializar_LS (Tno_ls **inicio)
 	return 0; /* sem erro */
 } /* Fim da fun��o de INICIALIZAR */
 
+int removerLista(Tno_ls **inicio)
+{
+    Tno_ls *percorre, *aux;
+    if(*inicio != NULL)
+    {
+        percorre = *inicio;
+        do{
+            aux = percorre;
+            percorre = percorre->prox;
+            free(aux);
+        }while (percorre != NULL);
+        *inicio = NULL;
+        return 1; /* inicializa apagando tudo da lista */
+    }
+    else
+    {
+        return 0;
+    }
+}
 
 int cadastrarNovoFolheto(Tno_ls *mtrFolhetos[tamanho][tamanho2], int lin, int col, Tno_ls *inicio){
     mtrFolhetos[lin][col] = inicio;
