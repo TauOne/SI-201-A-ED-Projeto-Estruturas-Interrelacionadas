@@ -59,12 +59,14 @@ int Inicializar7_LS(Tno_ls **P_inicio);
 int Inicializar8_LS(Tno_ls **P_inicio);
 int Inicializar9_LS(Tno_ls **P_inicio);
 int Inicializar10_LS(Tno_ls **P_inicio);
-
 int Inserir_inicio_LS(Tno_ls **P_inicio, int info);
+int Remover_inicio_LS (Tno_ls **inicio);
+int Remover_fim_LS (Tno_ls **inicio);
+int Remover_meio_LS (Tno_ls **inicio, int pos);
 int Inserir_fim_LS(Tno_ls **P_inicio, char info[100]);
 int Inserir_meio_LS(Tno_ls **P_inicio, int info, int pos);
 int Remover_inicio_LS(Tno_ls **P_inicio);
-int Listar_LS(Tno_ls *CP_inicio);
+int Listar_LS (Tno_ls *inicio, int posicao);
 int Obter_pos_LS(Tno_ls *CP_inicio, int dado, int *pos);
 int Obter_Tamanho_LS(Tno_ls *CP_inicio, int *tam);
 int Inverte_LS(Tno_ls **P_inicio);
@@ -100,7 +102,7 @@ int main(int argc, char const *argv[])
     int erro; /* valor de erro retornado pelas funcoes */
     int contadorLista = 0;
     int indicemercado;
-    int indicefolheto = 0, indicefolheto2 = 0, col = 0;
+    int indicefolheto = 0, indicefolheto2 = 0, col = 0, posExclusao = 0;
 	Tno_ls *ini,*ini2,*ini3,*ini4,*ini5,*ini6,*ini7,*ini8,*ini9,*ini10;
     char dado[100];
     do
@@ -125,7 +127,7 @@ int main(int argc, char const *argv[])
                 printf("2 - Modificar Folheto Existente\n");
                 printf("3 - Consultar Todos os Folhetos de um Mercado \n");
                 printf("4 - Remover Folheto Especifico \n");
-                printf("5 - Remover Mercado com Todos os Folhetos existentes \n");
+                printf("5 - Remover Todos os Folhetos de um mercado \n");
                 printf("6 - Imprimir folhetos \n");
                 printf("0 - Voltar \n\n");
                 scanf("%d", &opcaosubmenu2);
@@ -457,15 +459,14 @@ int main(int argc, char const *argv[])
                         printf("\nModificando Folheto Existente: \n\n");
                         printf("1 - Inserir novo produto\n");
                         printf("2 - Remover produto\n");
-                        printf("3 - Atualizar produto \n");
-                        printf("4 - Consultar todos produtos cadastrados \n");
+                        printf("3 - Consultar todos produtos cadastrados de um folheto\n");
                         printf("0 - Voltar \n\n");
                         scanf("%d", &opcaosubmenu3);
                         switch (opcaosubmenu3)
                         {
                         case 1:
                             do{
-                                printf("\nDigite para qual mercado o folheto que voce ira adicionar o produto (1 ou 2): ");
+                                printf("\nDigite para qual mercado o folheto que voce ira adicionar o produto esta (1 ou 2): ");
                                 scanf("%d", &indicemercado);
                                 if(indicemercado != 1 && indicemercado!=2){
                                     printf("\nOpcao nao valida \n");
@@ -487,10 +488,49 @@ int main(int argc, char const *argv[])
                             }
                             break;
                         case 2:
+                            do{
+                                printf("\nDigite para qual mercado o folheto que voce ira remover o produto esta (1 ou 2): ");
+                                scanf("%d", &indicemercado);
+                                if(indicemercado != 1 && indicemercado!=2){
+                                    printf("\nOpcao nao valida \n");
+                                    system("pause");
+                                }
+                            }while(indicemercado != 1 && indicemercado != 2);
+                            
+                            printf("\nDigite para qual folheto do mercado %d voce ira remover o produto (1 ao 5): ",indicemercado);
+                            scanf("%d", &col);
+                            flush_in();//limpa buffer do teclado
+
+                            printf("\nDigite a posicao do produto que sera excluido: ");
+                            scanf("%d", &posExclusao);
+                            erro = Remover_meio_LS(&mtrFolhetos[indicemercado-1][col-1],posExclusao);
+                            if(erro == 0){
+                                printf("\nRemocao de produto bem sucedida!\n");
+                                system("pause");
+                            }else if(erro == 1){
+                                printf("\nPosicao invalida!\n");
+                                system("pause");
+                            }else if(erro == 2){
+                                printf("\nPosicao invalida! Acima do tamanho da lista\n");
+                                system("pause");
+                            }
                             break;
                         case 3:
-                            break;
-                        case 4:
+                            do{
+                                printf("\nDigite em qual mercado o folheto que voce ira consultar esta (1 ou 2): ");
+                                scanf("%d", &indicemercado);
+                                if(indicemercado != 1 && indicemercado!=2){
+                                    printf("\nOpcao nao valida \n");
+                                    system("pause");
+                                }
+                            }while(indicemercado != 1 && indicemercado != 2);
+                            printf("\nDigite qual folheto do mercado %d voce ira listar os produtos (1 ao 5): ",indicemercado);
+                            scanf("%d", &col);
+                            erro = Listar_LS(mtrFolhetos[indicemercado-1][col-1],col);
+                            if(erro == 0){
+                                printf("\nFim da listagem dos produtos!\n");
+                                system("pause");
+                            }
                             break;
                         case 0:
                             break;
@@ -501,6 +541,7 @@ int main(int argc, char const *argv[])
                     } while ((opcaosubmenu3 != 0));
                     break;
                 case 3:
+                        
                     break;
                 case 4:
                     break;
@@ -605,4 +646,133 @@ int Inserir_fim_LS (Tno_ls **inicio, char info[100])
 	    percorre->prox = no_novo;
 	}
 	return 0;
+}
+
+int Obter_Tamanho_LS(Tno_ls *inicio, int *tam)
+{
+    Tno_ls *percorre;
+    *tam = 0;
+    if(inicio != NULL)
+    {
+        percorre = inicio;
+        while (percorre != NULL)
+        {
+            (*tam)++;
+            percorre = percorre -> prox;
+        }
+    }
+    else
+    {
+        *tam = 0;
+    }
+}
+
+int Remover_inicio_LS (Tno_ls **inicio)
+{
+    Tno_ls *aux;
+    if (*inicio == NULL)
+    {
+         printf("\nLISTA VAZIA ! \nRemocao Impossivel\n");
+        return 1;  /* lista vazia, impossivel remover primeiro */
+    }
+    else {
+        aux = *inicio;
+        *inicio = (*inicio)->prox;
+        free(aux);
+        return 0;
+    }
+}
+
+int Remover_fim_LS (Tno_ls **inicio)
+{
+    Tno_ls *aux, *percorre;
+    int tamanholista=0;
+    if (*inicio == NULL)
+    {
+        printf("\nLISTA VAZIA ! \nRemocao Impossivel\n");
+        return 1;  /* lista vazia, impossivel remover ultimo */
+    }
+    else
+    {
+        Obter_Tamanho_LS(*inicio, &tamanholista);
+        if (tamanho == 1)
+        {
+            Remover_inicio_LS(inicio);
+        }
+        else
+        {
+            percorre = *inicio;
+            while (percorre->prox != NULL)
+            {
+                aux = percorre;
+                percorre = percorre -> prox;
+            }
+            aux->prox = NULL;
+            free(percorre);
+            return 0;
+        }
+    }
+}
+
+int Remover_meio_LS (Tno_ls **inicio, int pos)
+{
+    int tam;
+    Tno_ls *aux, *percorre;
+
+    /* Tratamento de erros ======================================= */
+    if (pos<= 0)
+        return 1;  /*) posicao invalida para remocao */
+
+    Obter_Tamanho_LS(*inicio, &tam);
+    if (pos > tam)
+        return 2;   /* posicao invalida. Acima do tamanho da lista */
+    /* ================================================= */
+    /* procura pela posicao de remocao */
+    if (pos==1)
+    {
+        /* remocao no fim */
+        Remover_inicio_LS(inicio);
+    }
+    else
+    {
+        if (pos == tam)
+        {
+            Remover_fim_LS(inicio);
+        }
+        else
+        {
+            int pos_aux=1;
+            percorre = *inicio;
+            while (pos_aux!=pos) /* parar uma posicao antes */
+            {
+                aux = percorre;
+                percorre = percorre -> prox;
+                pos_aux++;
+            }
+            aux -> prox = percorre -> prox;
+            free(percorre);
+        }
+    }
+    return 0;
+}
+int Listar_LS (Tno_ls *inicio, int posicao)
+{
+	int i;
+    int contador = 1;
+	Tno_ls *aux;
+
+	if (inicio == NULL)
+	{
+        return 1;  /* lista vazia */
+	}
+    printf("Folheto selecionado: %d\n\n", posicao);
+    aux = inicio;
+	do {
+           printf("Posicao do produto no folheto => %d | Valor => ",contador);
+           contador++;
+           puts(inicio -> dado);
+		   inicio = inicio->prox;
+    } while (inicio != NULL);
+
+	return 0; /* sem erro */
 }
