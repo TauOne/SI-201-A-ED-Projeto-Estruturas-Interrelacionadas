@@ -199,10 +199,26 @@ int main(int argc, char const *argv[])
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
                             
-                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
-                            scanf("%d", &col);
-                            flush_in();//limpa buffer do teclado
 
+                            if(indicemercado-1 == 0){
+                                do{
+                                    printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                                    scanf("%d", &col);
+                                    if(col>indicefolheto){
+                                        printf("Esse folheto ainda nao foi inserido!\n");
+                                    }
+                                }while(col>indicefolheto);
+                            }
+                            else{
+                                 do{
+                                    printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                                    scanf("%d", &col);
+                                    if(col>indicefolheto2){
+                                        printf("Esse folheto ainda nao foi inserido!\n");
+                                    }
+                                }while(col>indicefolheto2);
+                            }
+                            flush_in();//limpa buffer do teclado
                             printf("\nDigite o nome do produto que sera inserido: ");
                             fgets(dado,100,stdin);
                            // scanf("%s",&dado);
@@ -222,8 +238,24 @@ int main(int argc, char const *argv[])
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
                             
-                            printf("\nDigite para qual folheto do mercado %d voce ira remover o produto (1 ao 5): ",indicemercado);
+                            if(indicemercado-1 == 0){
+                                do{
+                                    printf("\nDigite para qual folheto do mercado %d voce ira remover o produto (1 ao 5): ",indicemercado);
                             scanf("%d", &col);
+                                    if(col>indicefolheto){
+                                        printf("Esse folheto ainda nao foi inserido!\n");
+                                    }
+                                }while(col>indicefolheto);
+                            }
+                            else{
+                                 do{
+                                    printf("\nDigite para qual folheto do mercado %d voce ira remover o produto (1 ao 5): ",indicemercado);
+                                    scanf("%d", &col);
+                                    if(col>indicefolheto2){
+                                        printf("Esse folheto ainda nao foi inserido!\n");
+                                    }
+                                }while(col>indicefolheto2);
+                            }
                             flush_in();//limpa buffer do teclado
 
                             printf("\nDigite a posicao do produto que sera excluido: ");
@@ -249,8 +281,24 @@ int main(int argc, char const *argv[])
                                     system("pause");
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
-                            printf("\nDigite qual folheto do mercado %d voce ira listar os produtos (1 ao 5): ",indicemercado);
+                            if(indicemercado-1 == 0){
+                                do{
+                                    printf("\nDigite qual folheto do mercado %d voce ira listar os produtos (1 ao 5): ",indicemercado);
                             scanf("%d", &col);
+                                    if(col>indicefolheto){
+                                        printf("Esse folheto ainda nao foi inserido!\n");
+                                    }
+                                }while(col>indicefolheto);
+                            }
+                            else{
+                                 do{
+                                    printf("\nDigite qual folheto do mercado %d voce ira listar os produtos (1 ao 5): ",indicemercado);
+                                    scanf("%d", &col);
+                                    if(col>indicefolheto2){
+                                        printf("Esse folheto ainda nao foi inserido!\n");
+                                    }
+                                }while(col>indicefolheto2);
+                            }
                             erro = Listar_LS(mtrFolhetos[indicemercado-1][col-1],col);
                             if(erro == 0){
                                 printf("\nFim da listagem dos produtos!\n");
@@ -304,9 +352,24 @@ int main(int argc, char const *argv[])
                             system("pause");
                         }
                     }while(indicemercado != 1 && indicemercado != 2);
-
-                    printf("\nDigite qual folheto do mercado %d voce ira remover (1 ao 5): ",indicemercado);
-                    scanf("%d", &col);
+                    if(indicemercado-1 == 0){
+                        do{
+                            printf("\nDigite qual folheto do mercado %d voce ira remover (1 ao 5): ",indicemercado);
+                            scanf("%d", &col);
+                            if(col>indicefolheto){
+                                printf("Esse folheto ainda nao foi inserido!\n");
+                            }
+                        }while(col>indicefolheto);
+                    }
+                    else{
+                         do{
+                            printf("\nDigite qual folheto do mercado %d voce ira remover (1 ao 5): ",indicemercado);
+                            scanf("%d", &col);
+                            if(col>indicefolheto2){
+                                printf("Esse folheto ainda nao foi inserido!\n");
+                            }
+                        }while(col>indicefolheto2);
+                    }
                     erro = removerLista(&mtrFolhetos[indicemercado-1][col-1]);
                     if(erro == 1){
                         printf("\nFolheto removido com sucesso!\n");
