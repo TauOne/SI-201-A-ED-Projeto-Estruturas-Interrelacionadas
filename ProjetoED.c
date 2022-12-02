@@ -50,15 +50,6 @@ typedef struct no_ls
 } Tno_ls;
 
 int Inicializar_LS(Tno_ls **P_inicio);
-int Inicializar2_LS(Tno_ls **P_inicio);
-int Inicializar3_LS(Tno_ls **P_inicio);
-int Inicializar4_LS(Tno_ls **P_inicio);
-int Inicializar5_LS(Tno_ls **P_inicio);
-int Inicializar6_LS(Tno_ls **P_inicio);
-int Inicializar7_LS(Tno_ls **P_inicio);
-int Inicializar8_LS(Tno_ls **P_inicio);
-int Inicializar9_LS(Tno_ls **P_inicio);
-int Inicializar10_LS(Tno_ls **P_inicio);
 int Inserir_inicio_LS(Tno_ls **P_inicio, int info);
 int Remover_inicio_LS (Tno_ls **inicio);
 int Remover_fim_LS (Tno_ls **inicio);
@@ -103,7 +94,7 @@ int main(int argc, char const *argv[])
     int contadorLista = 0;
     int indicemercado;
     int indicefolheto = 0, indicefolheto2 = 0, col = 0, posExclusao = 0;
-	Tno_ls *ini,*ini2,*ini3,*ini4,*ini5,*ini6,*ini7,*ini8,*ini9,*ini10;
+    Tno_ls *ini,*ini2,*ini3,*ini4,*ini5,*ini6,*ini7,*ini8,*ini9,*ini10;
     char dado[100];
     do
     {
@@ -208,13 +199,13 @@ int main(int argc, char const *argv[])
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
                             
-                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado);
                             scanf("%d", &col);
                             flush_in();//limpa buffer do teclado
 
                             printf("\nDigite o nome do produto que sera inserido: ");
                             fgets(dado,100,stdin);
-                           // scanf("%s",&dado);
+                            // scanf("%s",&dado);
                             erro = Inserir_fim_LS(&mtrFolhetos[indicemercado-1][col-1],dado);
                             if(erro == 0){
                                 printf("\nInsercao de produto bem sucedida!\n");
@@ -324,7 +315,7 @@ int Inserir_fim_LS (Tno_ls **inicio, char info[100])
     no_novo -> prox = NULL;
     if (*inicio==NULL)
 	{ /* lista vazia. */
-	    *inicio = no_novo;
+	*inicio = no_novo;
         puts((*inicio)->dado);
 	}
 	else { /* lista nao vazia */
@@ -362,7 +353,7 @@ int Remover_inicio_LS (Tno_ls **inicio)
     Tno_ls *aux;
     if (*inicio == NULL)
     {
-         printf("\nLISTA VAZIA ! \nRemocao Impossivel\n");
+        printf("\nLISTA VAZIA ! \nRemocao Impossivel\n");
         return 1;  /* lista vazia, impossivel remover primeiro */
     }
     else {
@@ -448,21 +439,21 @@ int Remover_meio_LS (Tno_ls **inicio, int pos)
 int Listar_LS (Tno_ls *inicio, int posicao)
 {
 	int i;
-    int contador = 1;
+    	int contador = 1;
 	Tno_ls *aux;
 
 	if (inicio == NULL)
 	{
         return 1;  /* lista vazia */
 	}
-    printf("Folheto selecionado: %d\n\n", posicao);
-    aux = inicio;
+    	printf("Folheto selecionado: %d\n\n", posicao);
+    	aux = inicio;
 	do {
            printf("Posicao do produto no folheto => %d | Valor => ",contador);
            contador++;
            puts(inicio -> dado);
 		   inicio = inicio->prox;
-    } while (inicio != NULL);
+    	} while (inicio != NULL);
 
 	return 0; /* sem erro */
 }
