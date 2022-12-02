@@ -199,7 +199,7 @@ int main(int argc, char const *argv[])
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
                             
-                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado);
                             scanf("%d", &col);
                             flush_in();//limpa buffer do teclado
 
