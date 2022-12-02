@@ -191,7 +191,7 @@ int main(int argc, char const *argv[])
                         {
                         case 1:
                             do{
-                                printf("\nDigite para qual mercado o folheto que voce ira adicionar o produto esta (1 ou 2): ");
+                                printf("\nDigite para qual mercado o folheto que voce ira adicionar o produto (1 ou 2): ");
                                 scanf("%d", &indicemercado);
                                 if(indicemercado != 1 && indicemercado!=2){
                                     printf("\nOpcao nao valida \n");
@@ -202,7 +202,7 @@ int main(int argc, char const *argv[])
 
                             if(indicemercado-1 == 0){
                                 do{
-                                    printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                                    printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado);
                                     scanf("%d", &col);
                                     if(col>indicefolheto){
                                         printf("Esse folheto ainda nao foi inserido!\n");
@@ -211,7 +211,7 @@ int main(int argc, char const *argv[])
                             }
                             else{
                                  do{
-                                    printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                                    printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado);
                                     scanf("%d", &col);
                                     if(col>indicefolheto2){
                                         printf("Esse folheto ainda nao foi inserido!\n");
@@ -588,16 +588,13 @@ int Remover_meio_LS (Tno_ls **inicio, int pos)
 }
 int Listar_LS (Tno_ls *inicio, int posicao)
 {
-	int i;
     int contador = 1;
-	Tno_ls *aux;
 
 	if (inicio == NULL)
 	{
         return 1;  /* lista vazia */
 	}
     printf("Folheto selecionado: %d\n\n", posicao+1);
-    aux = inicio;
 	do {
            printf("Posicao do produto no folheto => %d | Valor => ",contador);
            contador++;
