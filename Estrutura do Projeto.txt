@@ -9,9 +9,3 @@ vão ser contituidas de strings com os nomes de produtos, e como são alocadas d
 Quando precisamos imprimir esses folhetos, precisamos atender a uma fila de mercados para impressão de seus folhetos, onde cada mercado possuirá uma pilha com todos os folhetos na
 ordem de prioridade para impressão, ou seja, sempre o primeiro folheto cadastrado deverá ser o primeiro a ser impresso. Nesta última etapa da aplicação, teremos 3 estruturas de dados
 ligadas ao mesmo tempo: fila, pilha e listas encadeadas simples, enquanto na primeira parte de cadastrar os produtos e folhetos, iremos possuir uma matriz de listas encadeadas.
-
-
-
-
-
-
