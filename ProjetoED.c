@@ -166,7 +166,7 @@ int main(int argc, char const *argv[])
                         }
                     }
                     else if(contadorLista == 1){
-                        erro=Inicializar_LS2 (&ini2);
+                        erro=Inicializar_LS (&ini2);
                         if(erro == 0){
                             printf("Lista 2 inializada\n");
                             if(indicemercado == 0){
@@ -188,7 +188,7 @@ int main(int argc, char const *argv[])
                         }
                     }
                     else if(contadorLista == 2){
-                        erro=Inicializar_LS3 (&ini3);
+                        erro=Inicializar_LS (&ini3);
                         if(erro == 0){
                             printf("Lista 3 inializada\n");
                             if(indicemercado == 0){
@@ -210,7 +210,7 @@ int main(int argc, char const *argv[])
                         }
                     }
                     else if(contadorLista == 3){
-                        erro=Inicializar_LS4 (&ini4);
+                        erro=Inicializar_LS (&ini4);
                         if(erro == 0){
                             printf("Lista 4 inializada\n");
                             if(indicemercado == 0){
@@ -232,7 +232,7 @@ int main(int argc, char const *argv[])
                         }
                     }
                     else if(contadorLista == 4){
-                        erro=Inicializar_LS5 (&ini5);
+                        erro=Inicializar_LS (&ini5);
                         if(erro == 0){
                             printf("Lista 5 inializada\n");
                             if(indicemercado == 0){
@@ -260,7 +260,7 @@ int main(int argc, char const *argv[])
                                     system("pause");
                                 }
                                 else{
-                                    erro=Inicializar_LS6 (&ini6);
+                                    erro=Inicializar_LS (&ini6);
                                     if(erro == 0){
                                             printf("Lista 6 inializada\n");
                                             contadorLista++;
@@ -279,7 +279,7 @@ int main(int argc, char const *argv[])
                                     system("pause");
                                 }
                                 else{
-                                    erro=Inicializar_LS6 (&ini6);
+                                    erro=Inicializar_LS (&ini6);
                                     if(erro == 0){
                                             printf("Lista 6 inializada\n");
                                             contadorLista++;
@@ -301,7 +301,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS7 (&ini7);
+                                    erro=Inicializar_LS (&ini7);
                                     if(erro == 0){
                                             printf("Lista 7 inializada\n");
                                             contadorLista++;
@@ -319,7 +319,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS7 (&ini7);
+                                    erro=Inicializar_LS (&ini7);
                                     if(erro == 0){
                                             printf("Lista 7 inializada\n");
                                             contadorLista++;
@@ -340,7 +340,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS8 (&ini8);
+                                    erro=Inicializar_LS (&ini8);
                                     if(erro == 0){
                                             printf("Lista 8 inializada\n");
                                             contadorLista++;
@@ -357,7 +357,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS8 (&ini8);
+                                    erro=Inicializar_LS (&ini8);
                                     if(erro == 0){
                                             printf("Lista 8 inializada\n");
                                             contadorLista++;
@@ -377,7 +377,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS9 (&ini9);
+                                    erro=Inicializar_LS (&ini9);
                                     if(erro == 0){
                                             printf("Lista 9 inializada\n");
                                             contadorLista++;
@@ -394,7 +394,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS9 (&ini9);
+                                    erro=Inicializar_LS (&ini9);
                                     if(erro == 0){
                                             printf("Lista 9 inializada\n");
                                             contadorLista++;
@@ -415,7 +415,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS10 (&ini10);
+                                    erro=Inicializar_LS (&ini10);
                                     if(erro == 0){
                                             printf("Lista 10 inializada\n");
                                             contadorLista++;
@@ -432,7 +432,7 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS10 (&ini10);
+                                    erro=Inicializar_LS (&ini10);
                                     if(erro == 0){
                                             printf("Lista 10 inializada\n");
                                             contadorLista++;
@@ -573,51 +573,7 @@ int Inicializar_LS (Tno_ls **inicio)
 	*inicio= NULL;
 	return 0; /* sem erro */
 } /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS2 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS3 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS4 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS5 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS6 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS7 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS8 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS9 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
-int Inicializar_LS10 (Tno_ls **inicio)
-{
-	*inicio= NULL;
-	return 0; /* sem erro */
-} /* Fim da fun��o de INICIALIZAR */
+
 
 int cadastrarNovoFolheto(Tno_ls *mtrFolhetos[tamanho][tamanho2], int lin, int col, Tno_ls *inicio){
     mtrFolhetos[lin][col] = inicio;
