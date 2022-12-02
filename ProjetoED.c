@@ -115,7 +115,6 @@ int main(int argc, char const *argv[])
                     
                     break;
                 case 2:
-                    ConsultaMercado (mercado, lista); 
                     break;
                 case 3:
                     break;
@@ -200,14 +199,14 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-void Inicializa_Matriz(Tno_ls mtrFolhetos[tamanho][tamanho2]){
+void Inicializa_Matriz(Tno_ls* mtrFolhetos[tamanho][tamanho2]){
     int i,j;
-    count = NULL;
+    Tno_ls* count = NULL;
 
     /* Inicializando a matriz e apontando seus elementos para NULL */
      for(i = 0; i<tamanho; i++){
         for(j=0; j<tamanho2; j++){
-          mtrFolhetos[i][j] = count;
+          mtrFolhetos[i][j] = *count;
         }
     }
 }
