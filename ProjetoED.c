@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+
 //------------------------------------------------------------------------------
 #define tamanho 2 // tamanho maximo da FILA
 #define tamanho2 5 //tamanho colunas
@@ -44,7 +45,7 @@ Estrutura LISTA ENCADEADA SIMPLES
 ------------------------------------------------------------------------------*/
 typedef struct no_ls
 {
-    char dado[20];
+    char dado[100];
     struct no_ls *prox;
 } Tno_ls;
 
@@ -60,7 +61,7 @@ int Inicializar9_LS(Tno_ls **P_inicio);
 int Inicializar10_LS(Tno_ls **P_inicio);
 
 int Inserir_inicio_LS(Tno_ls **P_inicio, int info);
-int Inserir_fim_LS(Tno_ls **P_inicio, char info[20]);
+int Inserir_fim_LS(Tno_ls **P_inicio, char info[100]);
 int Inserir_meio_LS(Tno_ls **P_inicio, int info, int pos);
 int Remover_inicio_LS(Tno_ls **P_inicio);
 int Listar_LS(Tno_ls *CP_inicio);
@@ -83,6 +84,12 @@ Estrutura MATRIZ
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
+//Limpa o buffer do teclado
+void flush_in(){ 
+    int ch;
+    while( (ch = fgetc(stdin)) != EOF && ch != '\n' ){} 
+}
+
 int main(int argc, char const *argv[])
 {
     int opcaoMenu;     /* receber a opcao do usuario do menu principal*/
@@ -95,7 +102,7 @@ int main(int argc, char const *argv[])
     int indicemercado;
     int indicefolheto = 0, indicefolheto2 = 0, col = 0;
 	Tno_ls *ini,*ini2,*ini3,*ini4,*ini5,*ini6,*ini7,*ini8,*ini9,*ini10;
-    char dado[20];
+    char dado[100];
     do
     {
         system("cls");
@@ -138,7 +145,6 @@ int main(int argc, char const *argv[])
                         erro=Inicializar_LS (&ini);
                         if(erro == 0){
                             printf("Lista 1 inializada\n");
-                            system("pause");
                             if(indicemercado == 0){
                                 erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini);
                                 if(erro == 0){
@@ -161,7 +167,6 @@ int main(int argc, char const *argv[])
                         erro=Inicializar_LS2 (&ini2);
                         if(erro == 0){
                             printf("Lista 2 inializada\n");
-                            system("pause");
                             if(indicemercado == 0){
                                 erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini2);
                                 if(erro == 0){
@@ -184,7 +189,6 @@ int main(int argc, char const *argv[])
                         erro=Inicializar_LS3 (&ini3);
                         if(erro == 0){
                             printf("Lista 3 inializada\n");
-                            system("pause");
                             if(indicemercado == 0){
                                 erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini3);
                                 if(erro == 0){
@@ -207,7 +211,6 @@ int main(int argc, char const *argv[])
                         erro=Inicializar_LS4 (&ini4);
                         if(erro == 0){
                             printf("Lista 4 inializada\n");
-                            system("pause");
                             if(indicemercado == 0){
                                 erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini4);
                                 if(erro == 0){
@@ -230,7 +233,6 @@ int main(int argc, char const *argv[])
                         erro=Inicializar_LS5 (&ini5);
                         if(erro == 0){
                             printf("Lista 5 inializada\n");
-                            system("pause");
                             if(indicemercado == 0){
                                 erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini5);
                                 if(erro == 0){
@@ -259,7 +261,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS6 (&ini6);
                                     if(erro == 0){
                                             printf("Lista 6 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini6);
@@ -279,7 +280,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS6 (&ini6);
                                     if(erro == 0){
                                             printf("Lista 6 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini6);
@@ -302,7 +302,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS7 (&ini7);
                                     if(erro == 0){
                                             printf("Lista 7 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini7);
@@ -321,7 +320,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS7 (&ini7);
                                     if(erro == 0){
                                             printf("Lista 7 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini7);
@@ -343,7 +341,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS8 (&ini8);
                                     if(erro == 0){
                                             printf("Lista 8 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini8);
@@ -361,7 +358,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS8 (&ini8);
                                     if(erro == 0){
                                             printf("Lista 8 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini8);
@@ -382,7 +378,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS9 (&ini9);
                                     if(erro == 0){
                                             printf("Lista 9 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini9);
@@ -400,7 +395,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS9 (&ini9);
                                     if(erro == 0){
                                             printf("Lista 9 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini9);
@@ -422,7 +416,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS10 (&ini10);
                                     if(erro == 0){
                                             printf("Lista 10 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini10);
@@ -440,7 +433,6 @@ int main(int argc, char const *argv[])
                                     erro=Inicializar_LS10 (&ini10);
                                     if(erro == 0){
                                             printf("Lista 10 inializada\n");
-                                            system("pause");
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini10);
@@ -481,13 +473,18 @@ int main(int argc, char const *argv[])
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
                             
-                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto: ",indicemercado+1);
+                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
                             scanf("%d", &col);
+                            flush_in();//limpa buffer do teclado
 
                             printf("\nDigite o nome do produto que sera inserido: ");
-                            scanf("%s", dado);
-                            erro = Inserir_fim_LS(&mtrFolhetos[indicemercado-1][col],dado);
-                            system("pause");
+                            fgets(dado,100,stdin);
+                           // scanf("%s",&dado);
+                            erro = Inserir_fim_LS(&mtrFolhetos[indicemercado-1][col-1],dado);
+                            if(erro == 0){
+                                printf("\nInsercao de produto bem sucedida!\n");
+                                system("pause");
+                            }
                             break;
                         case 2:
                             break;
@@ -586,7 +583,7 @@ int cadastrarNovoFolheto(Tno_ls *mtrFolhetos[tamanho][tamanho2], int lin, int co
     return 0;
 }
 
-int Inserir_fim_LS (Tno_ls **inicio, char info[20])
+int Inserir_fim_LS (Tno_ls **inicio, char info[100])
 {
     Tno_ls *no_novo, *percorre;
 
@@ -598,8 +595,6 @@ int Inserir_fim_LS (Tno_ls **inicio, char info[20])
 	{ /* lista vazia. */
 	    *inicio = no_novo;
         puts((*inicio)->dado);
-        printf("cadastro bem sucedido!!!\n");
-        system("pause");
 	}
 	else { /* lista nao vazia */
 	     percorre = *inicio;
