@@ -6,36 +6,8 @@
 #define tamanho 2 // tamanho maximo da FILA
 #define tamanho2 5 //tamanho colunas
 
-/* -----------------------------------------------------------------------------
-Estrutura FILA ESTATICA
-------------------------------------------------------------------------------*/
-typedef struct fila
-{
-    int item[tamanho];
-    int inicio, fim;
-} T_FILA;
-int inicializa(T_FILA *f);
-int verifica_vazio(T_FILA f);
-int remover(T_FILA *f);
-int verifica_cheio(T_FILA f);
-int insere(T_FILA *f, int x);
-int listar(T_FILA f);
 
-/* -----------------------------------------------------------------------------
-Estrutura pilha
-------------------------------------------------------------------------------*/
-typedef struct no_pilha
-{
-    int dado;
-    struct no_pilha *prox;
-} Tno_pilha;
-int Inicializar_pilha(Tno_pilha **inicio);
-int Inicializar2_pilha(Tno_pilha **inicio);
-int Inserir_topo(Tno_pilha **inicio, int info);
-int Remover_topo(Tno_pilha **inicio);
-int Obter_topo(Tno_pilha *inicio, int *dado);
-int Verifica_vazio(Tno_pilha *inicio, int *resp);
-int Juntar_pilhas(Tno_pilha **P1, Tno_pilha **P2, Tno_pilha **P3);
+
 
 /* -----------------------------------------------------------------------------
 Estrutura LISTA ENCADEADA SIMPLES
@@ -76,6 +48,36 @@ Estrutura MATRIZ
 // typedef struct matriz Matriz;
 
 //------------------------------------------------------------------------------
+/* -----------------------------------------------------------------------------
+Estrutura pilha
+------------------------------------------------------------------------------*/
+typedef struct no_pilha
+{
+    Tno_ls *folheto;
+    struct no_pilha *prox;
+} Tno_pilha;
+int Inicializar_pilha(Tno_pilha **inicio);
+int Inicializar2_pilha(Tno_pilha **inicio);
+int Inserir_topo(Tno_pilha **inicio, Tno_ls *folheto);
+int Remover_topo(Tno_pilha **inicio);
+int Obter_topo(Tno_pilha *inicio);
+int Verifica_vazio(Tno_pilha *inicio, int *resp);
+int Juntar_pilhas(Tno_pilha **P1, Tno_pilha **P2, Tno_pilha **P3);
+
+/* -----------------------------------------------------------------------------
+Estrutura FILA ESTATICA
+------------------------------------------------------------------------------*/
+typedef struct fila
+{
+    Tno_pilha *pilhas[2];
+    int inicio, fim;
+} T_FILA;
+int inicializa(T_FILA *f);
+int verifica_vazio(T_FILA f);
+int remover(T_FILA *f);
+int verifica_cheio(T_FILA f);
+int insere(T_FILA *f, Tno_pilha *inicio);
+int listar(T_FILA f);
 
 //------------------------------------------------------------------------------
 //Limpa o buffer do teclado
@@ -97,6 +99,11 @@ int main(int argc, char const *argv[])
     int indicefolheto = 0, indicefolheto2 = 0, col = 0, posExclusao = 0;
 	Tno_ls *ini;
     char dado[100];
+	Tno_pilha *iniPilhaMercado1;
+    Tno_pilha *iniPilhaMercado2;
+
+	T_FILA s;
+    
     do
     {
         system("cls");
@@ -404,6 +411,66 @@ int main(int argc, char const *argv[])
                     }   
                     break;
                 case 6:
+                    //inicializando a fila de mercados com folhetos para impressão
+                    if(indicefolheto > 0 && indicefolheto2 > 0){
+                        erro=inicializa (&s);
+                        if(erro == 0){
+                            printf("\nInicializacao da Fila realizada com sucesso !\n");
+                        }
+                    
+                        //montando as pilhas de cada dia da semana para mercado 1 -> a primeira inserida vai ficar no topo da pilha
+                        erro = Inicializar_pilha(&iniPilhaMercado1);
+                        if(erro == 0){
+                            printf("Inicializacao da Pilha 1 realizada com sucessso\n");
+                        }
+
+                        //populando pilha com todos os folhetos da semana do mercado 1
+                        for(cont2 = indicefolheto-1; cont2 >= 0; cont2--){
+                            erro = Inserir_topo(&iniPilhaMercado1,mtrFolhetos[0][cont2]);
+                            if(erro == 0){
+                                printf("Listas do mercado 1 inseridas com sucesso na pilha 1!\n");
+                        }
+                        }
+                        //inserindo pilha 1 na fila
+                        erro=insere(&s,iniPilhaMercado1);
+                        if (erro==1){
+                            printf("\nFila cheia. Overflow\n");
+                        }else if(erro==0){
+                            printf("Adicionada pilha 1 na fila com sucesso!\n");
+                        }
+  
+                        //montando as pilhas de cada dia da semana para mercado 2 -> a primeira inserida vai ficar no topo da pilha
+                        erro = Inicializar_pilha(&iniPilhaMercado2);
+                        if(erro == 0){
+                            printf("\nInicializacao da Pilha 2 realizada com sucessso\n");
+                        }
+
+                        //populando pilha com todos os folhetos da semana do mercado 2
+                        for(cont2 = indicefolheto2-1; cont2 >= 0; cont2--){
+                            erro = Inserir_topo(&iniPilhaMercado2,mtrFolhetos[1][cont2]);
+                            if(erro == 0){
+                                printf("Listas do mercado 2 inseridas com sucesso na pilha 2!\n");
+                            }
+                        }
+                        //inserindo pilha 2 na fila
+                        erro=insere(&s,iniPilhaMercado2);
+                        if (erro==1){
+                            printf("\nFila cheia. Overflow\n");
+                        }else if(erro==0){
+                            printf("Adicionada pilha 2 na fila com sucesso!\n");
+                        }
+
+                        //imprimindo a fila
+                        erro = listar(s);
+    			        if (erro == 1)
+	    		           printf("\nA fila esta vazia.\n");
+		    	        system("pause");
+                    }
+                    else{
+                        printf("Eh necessario ter inserido ao menos 1 folheto em cada um dos mercados\n");
+                        system("pause");
+                    }
+                    
                     break;
                 case 0:
                 break;
@@ -596,7 +663,9 @@ int Listar_LS (Tno_ls *inicio, int posicao)
 	{
         return 1;  /* lista vazia */
 	}
-    printf("Folheto selecionado: %d\n\n", posicao+1);
+    if(posicao != 900){
+        printf("Folheto selecionado: %d\n\n", posicao+1);
+    }
     aux = inicio;
 	do {
            printf("Posicao do produto no folheto => %d | Valor => ",contador);
@@ -606,4 +675,107 @@ int Listar_LS (Tno_ls *inicio, int posicao)
     } while (inicio != NULL);
 
 	return 0; /* sem erro */
+}
+
+int  inicializa (T_FILA *f)
+{
+  (*f).inicio = -1;
+  (*f).fim = -1;
+  return 0;
+}
+
+int Inicializar_pilha (Tno_pilha **inicio)
+{
+	*inicio= NULL;
+	return 0; /* sem erro */
+} /* Fim da fun��o de INICIALIZAR */
+
+int Inserir_topo (Tno_pilha **inicio, Tno_ls *folheto)
+{
+    Tno_pilha *no_novo;
+
+    /* Criacao do novo no - Aloca��o de memoria */
+    no_novo = (Tno_pilha *) malloc(sizeof(Tno_pilha));
+    no_novo -> folheto = folheto;
+	if (*inicio==NULL)
+	{    // insercao em pilha vazia
+	    no_novo -> prox = NULL;
+	    *inicio = no_novo;
+	}
+	else { // insercao em pilha nao vazia
+	     no_novo -> prox = *inicio;
+	    *inicio = no_novo;
+	}
+    return 0;
+}
+int verifica_cheio(T_FILA f)
+{
+    if (f.fim == tamanho-1 ){
+        return 1;   // fila cheia
+    }else{
+        return 2;  // fila n�o cheia
+    }
+}
+int insere(T_FILA *f, Tno_pilha *inicio)
+{
+    int erro = verifica_cheio(*f);
+    if (erro != 1)
+    {
+       (*f).fim++;
+       (*f).pilhas[(*f).fim]=inicio;// inser��o efetuada
+       if ((*f).inicio == -1)
+          (*f).inicio = 0;
+       return 0;
+    }
+    else
+       return 1; // impossivel inser��o. overflow
+}
+
+int Remover_topo (Tno_pilha **inicio)
+{
+    Tno_pilha *aux;
+    if (*inicio == NULL)
+    {
+         return 1;  /* pilha vazia, impossivel remover topo */
+    }
+    else {
+        aux = *inicio;
+        *inicio = (*inicio)->prox;
+        free(aux);
+        return 0;
+    }
+}
+int Obter_topo(Tno_pilha *inicio)
+{
+    if (inicio != NULL)
+    {
+        Listar_LS((inicio->folheto), 900);
+        printf("--------------------------------------------\n");
+        Remover_topo(&inicio);
+        Obter_topo(inicio);
+       return 0;
+    }
+    else
+       return 1; // Pilha Vazia
+}
+int verifica_vazio(T_FILA f)
+{
+    if(f.inicio==f.fim+1){
+       return 0;  // fila vazia
+    }else {
+        return -1;
+    }
+}
+int listar(T_FILA f)
+{  int i,erro;
+    erro=verifica_vazio(f);
+    if (erro!=0)
+    {
+       for (i=f.inicio; i<=f.fim; i++)
+            Obter_topo(f.pilhas[i]);
+            printf("fim da impressão do mercado %d\n",i);
+       printf("\n");
+       return 0;
+    }
+    else return 1;  // nao possivel listar pois a fila esta vazia
 }
