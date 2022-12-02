@@ -199,7 +199,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-void Inicializa_Matriz(Tno_ls* mtrFolhetos[tamanho][tamanho2]){
+void Inicializa_Matriz(Tno_ls mtrFolhetos[tamanho][tamanho2]){
     int i,j;
     Tno_ls* count = NULL;
 
