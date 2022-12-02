@@ -6,9 +6,6 @@
 #define tamanho 2 // tamanho maximo da FILA
 #define tamanho2 5 //tamanho colunas
 
-
-
-
 /* -----------------------------------------------------------------------------
 Estrutura LISTA ENCADEADA SIMPLES
 
@@ -36,18 +33,6 @@ int Inverte_LS(Tno_ls **P_inicio);
 int cadastrarNovoFolheto(Tno_ls *mtrFolhetos[tamanho][tamanho2], int lin, int col, Tno_ls *inicio);
 int removerLista(Tno_ls **inicio);
 
-/* -----------------------------------------------------------------------------
-Estrutura MATRIZ
-------------------------------------------------------------------------------*/
-// struct matriz
-// {
-//     int **elemento;
-//     int nlinhas;
-//     int ncolunas;
-// };
-// typedef struct matriz Matriz;
-
-//------------------------------------------------------------------------------
 /* -----------------------------------------------------------------------------
 Estrutura pilha
 ------------------------------------------------------------------------------*/
@@ -335,7 +320,7 @@ int main(int argc, char const *argv[])
                     printf("\n");
                     if(indicemercado == 0){
                         for(cont = 0; cont < indicefolheto; cont++){
-                            erro = Listar_LS(mtrFolhetos[indicemercado][cont],cont);
+                            erro = Listar_LS(mtrFolhetos[indicemercado][cont],cont+1);
                             printf("----------------------------------------------\n");
                         }
                         printf("\nFim da listagem dos folhetos!\n");
@@ -470,7 +455,6 @@ int main(int argc, char const *argv[])
                         printf("Eh necessario ter inserido ao menos 1 folheto em cada um dos mercados\n");
                         system("pause");
                     }
-                    
                     break;
                 case 0:
                 break;
@@ -489,7 +473,6 @@ int main(int argc, char const *argv[])
     } while ((opcaoMenu != 0));
     return 0;
 }
-
 
 int Inicializar_LS (Tno_ls **inicio)
 {
@@ -525,7 +508,6 @@ int cadastrarNovoFolheto(Tno_ls *mtrFolhetos[tamanho][tamanho2], int lin, int co
 int Inserir_fim_LS (Tno_ls **inicio, char info[100])
 {
     Tno_ls *no_novo, *percorre;
-
     /* Criacao do novo no - Aloca��o de memoria */
     no_novo = (Tno_ls *) malloc(sizeof(Tno_ls));
     strcpy (no_novo -> dado, info);
@@ -664,7 +646,7 @@ int Listar_LS (Tno_ls *inicio, int posicao)
         return 1;  /* lista vazia */
 	}
     if(posicao != 900){
-        printf("Folheto selecionado: %d\n\n", posicao+1);
+        printf("Folheto selecionado: %d\n\n", posicao);
     }
     aux = inicio;
 	do {
