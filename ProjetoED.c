@@ -3,6 +3,7 @@
 #include <string.h>
 //------------------------------------------------------------------------------
 #define tamanho 3 // tamanho maximo da FILA
+#define tamanho2 5 //tamanho colunas
 
 /* -----------------------------------------------------------------------------
 Estrutura FILA ESTATICA
@@ -58,21 +59,21 @@ int Listar_LS(Tno_ls *CP_inicio);
 int Obter_pos_LS(Tno_ls *CP_inicio, int dado, int *pos);
 int Obter_Tamanho_LS(Tno_ls *CP_inicio, int *tam);
 int Inverte_LS(Tno_ls **P_inicio);
+Tno_ls mtrFolhetos[tamanho][tamanho2]; /* matriz que armazena os folhetos */
+void Inicializa_Matriz(Tno_ls mtrFolhetos[tamanho][tamanho2]);
+
 
 /* -----------------------------------------------------------------------------
 Estrutura MATRIZ
 ------------------------------------------------------------------------------*/
-struct matriz
-{
-    int **elemento;
-    int nlinhas;
-    int ncolunas;
-};
-typedef struct matriz Matriz;
+// struct matriz
+// {
+//     int **elemento;
+//     int nlinhas;
+//     int ncolunas;
+// };
+// typedef struct matriz Matriz;
 
-/*Matriz simples para cadastrar apenas os nomes dos mercados*/
-void CadastraMercado (char mercado, int lista); //protótipo da função CadastraMercado
-void ConsultaMercado (char mercado, int lista); //protótipo da função ConsultaMercado
 //------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------------
@@ -82,8 +83,6 @@ int main(int argc, char const *argv[])
     int opcaosubmenu1; /* receber a opcao do usuario do submenu mercado*/
     int opcaosubmenu2; /* receber a opcao do usuario do submenu folheto*/
     int opcaosubmenu3; /* receber a opcao do usuario do submenu modificando folheto do submenu folheto*/
-    int lista;
-    char mercado;
 
     do
     {
@@ -113,7 +112,7 @@ int main(int argc, char const *argv[])
                 switch (opcaosubmenu1)
                 {
                 case 1:
-                    CadastraMercado(mercado, lista);
+                    
                     break;
                 case 2:
                     ConsultaMercado (mercado, lista); 
@@ -201,35 +200,17 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-void CadastraMercado(char mercado, int lista){
-    char Mercado[3][5];
-    char ArmazenaMercados [3][5];
+void Inicializa_Matriz(Tno_ls mtrFolhetos[tamanho][tamanho2]){
     int i,j;
+    count = NULL;
 
-    //percorrendo os valores da matriz e inserindo nomes de mercado
-    printf("Digite os nomes dos mercados separados por Enter\n");
-    for(i = 0; i<3; i++){
-        for(j=0; j<5; j++){
-          scanf("%c", &Mercado[i][j]);
-          ArmazenaMercados [i][j] = Mercado[i][j];
-        }
-    }
-    return ArmazenaMercados[i][j];
-}
-
-void ConsultaMercado(char mercado, int lista){
-    CadastraMercado(mercado, lista);
-    char ArmazenaMercados [3][5];
-    int i,j;
-
-  printf("Lista de mercados: \n");
-    for(i = 0; i<3; i++){
-        for(j=0; j<5; j++){
-        printf("%c \n", ArmazenaMercados[i][j]);
+    /* Inicializando a matriz e apontando seus elementos para NULL */
+     for(i = 0; i<tamanho; i++){
+        for(j=0; j<tamanho2; j++){
+          mtrFolhetos[i][j] = count;
         }
     }
 }
-
 
 
 
