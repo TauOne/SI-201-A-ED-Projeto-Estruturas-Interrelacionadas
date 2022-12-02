@@ -143,273 +143,7 @@ int main(int argc, char const *argv[])
                         }
                     }while((indicemercado != 1 && indicemercado != 2));
                     indicemercado--;
-                    if(contadorLista == 0){
-                        erro=Inicializar_LS (&ini);
-                        if(erro == 0){
-                            printf("Lista 1 inializada\n");
-                            if(indicemercado == 0){
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                    system("pause");
-                                }
-                                indicefolheto++;
-                            }else{
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                    system("pause");
-                                }
-                                indicefolheto2++;
-                            }
-                            contadorLista++;
-                        }
-                    }
-                    else if(contadorLista == 1){
-                        erro=Inicializar_LS (&ini2);
-                        if(erro == 0){
-                            printf("Lista 2 inializada\n");
-                            if(indicemercado == 0){
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini2);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                    system("pause");
-                                }
-                                indicefolheto++;
-                            }else{
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini2);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                    system("pause");
-                                }
-                                indicefolheto2++;
-                            }
-                            contadorLista++;
-                        }
-                    }
-                    else if(contadorLista == 2){
-                        erro=Inicializar_LS (&ini3);
-                        if(erro == 0){
-                            printf("Lista 3 inializada\n");
-                            if(indicemercado == 0){
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini3);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                    system("pause");
-                                }
-                                indicefolheto++;
-                            }else{
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini3);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                    system("pause");
-                                }
-                                indicefolheto2++;
-                            }
-                            contadorLista++;
-                        }
-                    }
-                    else if(contadorLista == 3){
-                        erro=Inicializar_LS (&ini4);
-                        if(erro == 0){
-                            printf("Lista 4 inializada\n");
-                            if(indicemercado == 0){
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini4);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                    system("pause");
-                                }
-                                indicefolheto++;
-                            }else{
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini4);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                    system("pause");
-                                }
-                                indicefolheto2++;
-                            }
-                            contadorLista++;
-                        }
-                    }
-                    else if(contadorLista == 4){
-                        erro=Inicializar_LS (&ini5);
-                        if(erro == 0){
-                            printf("Lista 5 inializada\n");
-                            if(indicemercado == 0){
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini5);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                    system("pause");
-                                }
-                                indicefolheto++;
-                            }else{
-                                erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini5);
-                                if(erro == 0){
-                                    printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                    system("pause");
-                                }
-                                indicefolheto2++;
-                            }
-                            contadorLista++;
-                        }
-                    }
-                    else if(contadorLista == 5){
-                            if(indicemercado == 0){
-                                if(indicefolheto > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }
-                                else{
-                                    erro=Inicializar_LS (&ini6);
-                                    if(erro == 0){
-                                            printf("Lista 6 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini6);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto++;
-                                }
-                                
-                            }else{
-                                if(indicefolheto2 > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }
-                                else{
-                                    erro=Inicializar_LS (&ini6);
-                                    if(erro == 0){
-                                            printf("Lista 6 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini6);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto2++;   
-                                }
-                                
-                            }
-                        
-                    }
-                    else if(contadorLista == 6){
-                            if(indicemercado == 0){
-                                if(indicefolheto > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }else{
-                                    erro=Inicializar_LS (&ini7);
-                                    if(erro == 0){
-                                            printf("Lista 7 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini7);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto++;
-                                }
-                                
-                            }else{
-                                if(indicefolheto2 > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }else{
-                                    erro=Inicializar_LS (&ini7);
-                                    if(erro == 0){
-                                            printf("Lista 7 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini7);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto2++;
-                                }
-                            }
-                        
-                    }
-                    else if(contadorLista == 7){
-                            if(indicemercado == 0){
-                                if(indicefolheto > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }else{
-                                    erro=Inicializar_LS (&ini8);
-                                    if(erro == 0){
-                                            printf("Lista 8 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini8);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto++;
-                                }
-                            }else{
-                                if(indicefolheto2 > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }else{
-                                    erro=Inicializar_LS (&ini8);
-                                    if(erro == 0){
-                                            printf("Lista 8 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini8);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto2++;
-                                }
-                            }
-                    }
-                    else if(contadorLista == 8){
-                            if(indicemercado == 0){
-                                if(indicefolheto > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }else{
-                                    erro=Inicializar_LS (&ini9);
-                                    if(erro == 0){
-                                            printf("Lista 9 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini9);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 1\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto++;
-                                }
-                            }else{
-                                if(indicefolheto2 > 4){
-                                    printf("Quantidade maxima de folhetos adicionados\n");
-                                    system("pause");
-                                }else{
-                                    erro=Inicializar_LS (&ini9);
-                                    if(erro == 0){
-                                            printf("Lista 9 inializada\n");
-                                            contadorLista++;
-                                    }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini9);
-                                    if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 2\n");
-                                        system("pause");
-                                    }
-                                    indicefolheto2++;
-                                }
-                            }
-                    }
-                    else if(contadorLista == 9){
-                        
+                    if(contadorLista < 10){
                             if(indicemercado == 0){
                                 if(indicefolheto > 4){
                                     printf("Quantidade maxima de folhetos adicionados\n");
@@ -417,12 +151,12 @@ int main(int argc, char const *argv[])
                                 }else{
                                     erro=Inicializar_LS (&ini10);
                                     if(erro == 0){
-                                            printf("Lista 10 inializada\n");
+                                            printf("Lista %d inializada\n",contadorLista+1);
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini10);
                                     if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 1\n");
+                                        printf("Folheto Novo Adicionado no Mercado 1\n");
                                         system("pause");
                                     }
                                     indicefolheto++;
@@ -434,12 +168,12 @@ int main(int argc, char const *argv[])
                                 }else{
                                     erro=Inicializar_LS (&ini10);
                                     if(erro == 0){
-                                            printf("Lista 10 inializada\n");
+                                            printf("Lista %d inializada\n",contadorLista+1);
                                             contadorLista++;
                                     }
                                     erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini10);
                                     if(erro == 0){
-                                        printf("Folheto Novo nos Folhetos do Mercado 2\n");
+                                        printf("Folheto Novo Adicionado no Mercado 2\n");
                                         system("pause");
                                     }
                                     indicefolheto2++;
