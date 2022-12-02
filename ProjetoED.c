@@ -103,7 +103,7 @@ int main(int argc, char const *argv[])
     int contadorLista = 0;
     int indicemercado;
     int indicefolheto = 0, indicefolheto2 = 0, col = 0, posExclusao = 0;
-	Tno_ls *ini,*ini2,*ini3,*ini4,*ini5,*ini6,*ini7,*ini8,*ini9,*ini10;
+	Tno_ls *ini;
     char dado[100];
     do
     {
@@ -149,12 +149,12 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS (&ini10);
+                                    erro=Inicializar_LS (&ini);
                                     if(erro == 0){
                                             printf("Lista %d inializada\n",contadorLista+1);
                                             contadorLista++;
                                     }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini10);
+                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto,ini);
                                     if(erro == 0){
                                         printf("Folheto Novo Adicionado no Mercado 1\n");
                                         system("pause");
@@ -166,20 +166,19 @@ int main(int argc, char const *argv[])
                                     printf("Quantidade maxima de folhetos adicionados\n");
                                     system("pause");
                                 }else{
-                                    erro=Inicializar_LS (&ini10);
+                                    erro=Inicializar_LS (&ini);
                                     if(erro == 0){
                                             printf("Lista %d inializada\n",contadorLista+1);
                                             contadorLista++;
                                     }
-                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini10);
+                                    erro = cadastrarNovoFolheto(&mtrFolhetos,indicemercado,indicefolheto2,ini);
                                     if(erro == 0){
                                         printf("Folheto Novo Adicionado no Mercado 2\n");
                                         system("pause");
                                     }
                                     indicefolheto2++;
                                 }
-                            }
-                        
+                            }    
                     }
                     else{
                         printf("Todos os folhetos dos dois mercados ja foram cadastrados\n");
@@ -275,7 +274,34 @@ int main(int argc, char const *argv[])
                     } while ((opcaosubmenu3 != 0));
                     break;
                 case 3:
-                        
+                    do{
+                        printf("\nDigite qual mercado voce deseja listar todos os folhetos (1 ou 2): ");
+                        scanf("%d", &indicemercado);
+                        if(indicemercado != 1 && indicemercado!=2){
+                            printf("\nOpcao nao valida \n");
+                            system("pause");
+                        }
+                    }while(indicemercado != 1 && indicemercado != 2);
+
+                    indicemercado--;
+                    int cont;
+                    printf("\n");
+                    if(indicemercado == 0){
+                        for(cont = 0; cont < indicefolheto; cont++){
+                            erro = Listar_LS(mtrFolhetos[indicemercado][cont],cont);
+                            printf("----------------------------------------------\n");
+                        }
+                        printf("\nFim da listagem dos folhetos!\n");
+                        system("pause");
+                    }
+                    else{
+                        for(cont = 0; cont < indicefolheto2; cont++){
+                            erro = Listar_LS(mtrFolhetos[indicemercado][cont],cont);
+                            printf("----------------------------------------------\n");
+                        }
+                        printf("\nFim da listagem dos folhetos!\n");
+                        system("pause");
+                    }
                     break;
                 case 4:
                     break;
@@ -455,7 +481,7 @@ int Listar_LS (Tno_ls *inicio, int posicao)
 	{
         return 1;  /* lista vazia */
 	}
-    printf("Folheto selecionado: %d\n\n", posicao);
+    printf("Folheto selecionado: %d\n\n", posicao+1);
     aux = inicio;
 	do {
            printf("Posicao do produto no folheto => %d | Valor => ",contador);
