@@ -50,15 +50,6 @@ typedef struct no_ls
 } Tno_ls;
 
 int Inicializar_LS(Tno_ls **P_inicio);
-int Inicializar2_LS(Tno_ls **P_inicio);
-int Inicializar3_LS(Tno_ls **P_inicio);
-int Inicializar4_LS(Tno_ls **P_inicio);
-int Inicializar5_LS(Tno_ls **P_inicio);
-int Inicializar6_LS(Tno_ls **P_inicio);
-int Inicializar7_LS(Tno_ls **P_inicio);
-int Inicializar8_LS(Tno_ls **P_inicio);
-int Inicializar9_LS(Tno_ls **P_inicio);
-int Inicializar10_LS(Tno_ls **P_inicio);
 int Inserir_inicio_LS(Tno_ls **P_inicio, int info);
 int Remover_inicio_LS (Tno_ls **inicio);
 int Remover_fim_LS (Tno_ls **inicio);
@@ -207,7 +198,7 @@ int main(int argc, char const *argv[])
                                 }
                             }while(indicemercado != 1 && indicemercado != 2);
                             
-                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado+1);
+                            printf("\nDigite para qual folheto do mercado %d voce ira adicionar o produto (1 ao 5): ",indicemercado);
                             scanf("%d", &col);
                             flush_in();//limpa buffer do teclado
 
