@@ -392,20 +392,14 @@ int main(int argc, char const *argv[])
                         for(cont2 = 0; cont2 < indicefolheto; cont2++){
                             erro = removerLista(&mtrFolhetos[indicemercado][cont2]);
                         }
-			if(erro == 1)
-                            printf("\nTodos os folhetos do mercado 1 foram removidos!\n");
-			else
-			    printf("\nO mercado 2 não possui folhetos!\n);
+                        printf("\nTodos os folhetos do mercado 1 foram removidos!\n");
                         system("pause");
                     }
                     else{
                         for(cont2 = 0; cont2 < indicefolheto2; cont2++){
                             erro = removerLista(&mtrFolhetos[indicemercado][cont2]);
                         }
-			if(erro == 1)
-                            printf("\nTodos os folhetos do mercado 2 foram removidos!\n");
-			else
-			    printf("\nO mercado 2 não possui folhetos!\n);
+                        printf("\nTodos os folhetos do mercado 2 foram removidos!\n");
                         system("pause");
                     }   
                     break;
